@@ -4,7 +4,7 @@ import net.minecraft.client.MinecraftClient;
 
 public final class PerformanceTracker {
 
-    private static final int MAX_SAMPLES = 20 * 60 * 10; // 10 minutes
+    private static final int MAX_SAMPLES = 20 * 60 * 10; // 10 minutes at 20 TPS
     private static final int[] fpsSamples = new int[MAX_SAMPLES];
     private static int index = 0;
     private static boolean filled = false;
@@ -23,6 +23,14 @@ public final class PerformanceTracker {
 
     public static int count() {
         return filled ? MAX_SAMPLES : index;
+    }
+
+    public static void reset() {
+        index = 0;
+        filled = false;
+        for (int i = 0; i < MAX_SAMPLES; i++) {
+            fpsSamples[i] = 0;
+        }
     }
 
     private PerformanceTracker() {}
