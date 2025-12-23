@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "f3commands",
+  "version": "${version}",
+  "name": "F3Commands",
+  "description": "Get debug details using simple client-side commands.",
+  "authors": [
+    "DraxonV1"
+  ],
+  "contact": {
+    "homepage": "https://gitlab.com/DraxonV1/F3Commands",
+    "sources": "https://gitlab.com/DraxonV1/F3Commands"
+  },
+  "license": "MIT",
+  "icon": "assets/f3commands/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.draxon.f3commands.F3CommandsClient"
+    ],
+    "modmenu": [
+      "com.draxon.f3commands.config.ModMenuIntegration"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.5",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
