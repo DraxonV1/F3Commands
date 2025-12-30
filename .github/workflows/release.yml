@@ -31,7 +31,6 @@ jobs:
       - name: Build
         run: ./gradlew clean build
 
-<<<<<<< HEAD
       - name: Extract Minecraft version from tag
         id: mc_version
         run: |
@@ -41,10 +40,6 @@ jobs:
 
       # -----------------------------
       # GitHub Release (includes sources jar)
-=======
-      # -----------------------------
-      # GitHub Release
->>>>>>> 0755b43 (Added Github Actions)
       # -----------------------------
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -56,16 +51,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # -----------------------------
-<<<<<<< HEAD
       # Modrinth + CurseForge Publish (main jar only)
-=======
-      # Modrinth + CurseForge Publish
->>>>>>> 0755b43 (Added Github Actions)
       # -----------------------------
       - name: Publish to Modrinth & CurseForge
         uses: Kir-Antipov/mc-publish@v3
         with:
-<<<<<<< HEAD
           files: |
             build/libs/*.jar
             !build/libs/*-sources.jar
@@ -76,29 +66,12 @@ jobs:
           curseforge-id: 1412285
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-=======
-          files: build/libs/*.jar
-
-          # ===== Modrinth =====
-          modrinth-id: Hvofb9IZ
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-
-          # ===== CurseForge =====
-          curseforge-id: 1412285
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-
-          # ===== Metadata =====
->>>>>>> 0755b43 (Added Github Actions)
           name: F3Commands ${{ github.ref_name }}
           version: ${{ github.ref_name }}
           version-type: release
 
           loaders: fabric
-<<<<<<< HEAD
           game-versions: ${{ steps.mc_version.outputs.game_version }}
-=======
-          game-versions: 1.21.5
->>>>>>> 0755b43 (Added Github Actions)
 
           changelog: |
             Automated release.
