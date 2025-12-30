@@ -51,23 +51,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # -----------------------------
-      # Determine main JAR filename
-      # -----------------------------
-      - name: Determine main JAR filename
-        id: jar_filename
-        run: |
-          JAR_FILE=$(ls build/libs/ | grep -v "sources.jar" | grep ".jar")
-          echo "jar_file=$JAR_FILE" >> $GITHUB_OUTPUT
-
-      # -----------------------------
       # Modrinth + CurseForge Publish (main jar only)
       # -----------------------------
       - name: Publish to Modrinth & CurseForge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          files: build/libs/${{ steps.jar_filename.outputs.jar_file }}
-
+          files: build/libs/!(*-@(dev|sources|javadoc)).jar
+          
           modrinth-id: Hvofb9IZ
+          modrinth-featured: true
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           curseforge-id: 1412285
